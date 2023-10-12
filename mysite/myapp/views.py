@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
+<<<<<<< HEAD
 
 
 def index(request):
     return render(request, 'myapp/post/list.html')
+=======
+>>>>>>> 0b7259f23bf659fb3b919fbb40cbde12f988b7da
 
 
 def main_page(request):
