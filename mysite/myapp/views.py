@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
+from mysite.myapp.models import Article
+
+
 def index(request):
     return render(request, 'myapp/post/list.html')
 
 
 def main_page(request):
+    articles = Article.objects.all()
     return HttpResponse('Main page')
 
 
@@ -31,7 +35,6 @@ def set_password(request):
 
 def set_userdata(request):
     return HttpResponse('Set Userdata')
-
 
 def deactivate(request):
     return HttpResponse('Deactivate')
