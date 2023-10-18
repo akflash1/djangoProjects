@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404
-
-from mysite.myapp.models import Article
+from myapp.models import Article, Comment
 
 
 def index(request):
@@ -10,7 +9,7 @@ def index(request):
 
 def main_page(request):
     articles = Article.objects.all()
-    return HttpResponse('Main page')
+    return render(request, 'myapp/post/list.html', {'articles': articles})
 
 
 def about(request):
@@ -36,6 +35,7 @@ def set_password(request):
 def set_userdata(request):
     return HttpResponse('Set Userdata')
 
+
 def deactivate(request):
     return HttpResponse('Deactivate')
 
@@ -52,8 +52,24 @@ def logout(request):
     return render(request, 'myapp/user/login.html')
 
 
+# show_article(request, article_id):
+#   article = Article.objects.get_objects_or_404(Article, pk=article_id)
+#   return render(request, template_name='myapp/post/article.html')
+
+
+
 def show_article(request, article_id):
-    return render(request, 'myapp/post/detail.html')
+    article = get_object_or_404(Article, pk=article_id)
+    article = Article.objects.get(id=article_id)
+    comments = Comment.objects.filter(article=article)
+    return render(request, 'myapp/post/detail.html', {'article': article,
+                                                      'comments': comments})
+
+
+
+def article_list(request):
+    articles = Article.objects.all()
+    return render(request, 'myapp/post/list.html', {'articles': articles})
 
 
 def update_article(request, article_id):

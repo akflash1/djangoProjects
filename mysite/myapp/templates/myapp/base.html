@@ -2,28 +2,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}{% endblock %}</title>
-  <link href="{% static "css/blog.css" %}" rel="stylesheet">
+  <title>{% block title %}My Blog{% endblock %}</title>
+  <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="{% url 'login' %}">Sign in</a></li>
-        <li><a href="{% url 'registration' %}">Sign up</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'article_detail' 1 %}">Show article</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'login' %}">Sign in</a></li>
+          <li><a href="{% url 'registration' %}">Sign up</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'article_detail' 1 %}">Show article</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <div id="content">
-    {% block content %}
-    {% endblock %}
-  </div>
-  <div id="sidebar">
-    <h2>My blog</h2>
-    <p>This is my blog.</p>
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
   </div>
 </body>
 </html>
