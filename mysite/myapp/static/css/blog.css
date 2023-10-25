@@ -95,4 +95,24 @@ header nav ul li a:hover {
     font-size: 14px;
     color: #333;
 }
+.topic-list {
+    list-style-type: none;
+    padding: 0;
+}
 
+.topic-list li {
+    margin-bottom: 10px;
+}
+
+.topic-list li a {
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+    color: #000;
+    background-color: #9e9e9e;
+}
+
+.topic-list li a:hover {
+    background-color: #ddd;
+    color: black;
+}
