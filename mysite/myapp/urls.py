@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (
     IndexView, MainPageView, AboutView, CreateView, TopicListView, SetPasswordView, SetUserDataView,
     DeactivateView, RegisterView, LoginView, LogoutView, ShowArticleView, UpdateArticleView,
@@ -27,4 +27,5 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('topics/<int:topic_id>/', TopicDetailView.as_view(), name='topic_detail'),
+    path('api/', include('myapp.urls_api')),
 ]
