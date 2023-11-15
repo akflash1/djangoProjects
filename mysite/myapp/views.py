@@ -1,13 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
+def index(request):
+    return render(request, 'myapp/post/list.html')
+
 
 def main_page(request):
     return HttpResponse('Main page')
 
 
 def about(request):
-    return HttpResponse('About')
+    return render(request, 'myapp/about.html')
+
+
+def registration(request):
+    return HttpResponse('Register')
 
 
 def create(request):
@@ -31,31 +38,35 @@ def deactivate(request):
 
 
 def register(request):
-    return HttpResponse('Register')
+    return render(request, 'myapp/user/login.html')
 
 
 def login(request):
-    return HttpResponse('Login')
+    return render(request, 'myapp/user/login.html')
 
 
 def logout(request):
-    return redirect('main_page')
+    return render(request, 'myapp/user/login.html')
 
 
-def article_show(request, article):
-    return HttpResponse(f'Article: {article}')
+def show_article(request, article_id):
+    return render(request, 'myapp/post/detail.html')
 
 
-def article_update(request, article):
-    return HttpResponse(f'Article Update: {article}')
+def update_article(request, article_id):
+    return render(request, 'myapp/post/update_article.html')
 
 
-def article_delete(request, article):
-    return HttpResponse(f'Article Delete: {article}')
+def delete_article(request, article_id):
+    return render(request, 'myapp/post/delete_article.html')
 
 
-def article_comment(request, article):
-    return HttpResponse(f'Article Comment: {article}')
+def create_article(request):
+    return render(request, 'myapp/post/create_article.html')
+
+
+def add_comment(request, article_id):
+    return render(request, 'myapp/post/add_comment.html')
 
 
 def topics_subscribe(request, topic):
