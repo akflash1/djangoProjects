@@ -1,24 +1,17 @@
-{% extends 'myapp/base.html' %}
+{% extends "myapp/base.html" %}
 
-{% block content  %}
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <a href="{% url 'registration' %}">Registration</a>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+{% block title %} Login {% endblock %}
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-</body>
-</html>
+{% block content %}
+<h1>Login</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <input type="submit" value="Login">
+</form>
 {% endblock %}
