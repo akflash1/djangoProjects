@@ -116,3 +116,19 @@ header nav ul li a:hover {
     background-color: #ddd;
     color: black;
 }
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #45a049;
+}

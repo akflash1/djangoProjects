@@ -1,15 +1,15 @@
 from rest_framework import serializers
-from .models import Article, Topic, Comment
+from myapp.models import Article, Topic, Comment
 
 
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
-        fields = ['title', ' description', 'subscribers_new']
+        fields = ['id', 'title', 'description', 'subscribers_new']
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    topic = serializers.StringRelatedField(many=True, read_only=True)
+    topics = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Article
@@ -17,8 +17,8 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    topic = serializers.StringRelatedField()
+    article = serializers.StringRelatedField()
 
     class Meta:
         model = Comment
-        fields = ['created', 'message', 'author', 'article']
+        fields = ['id', 'created', 'message', 'author', 'article']

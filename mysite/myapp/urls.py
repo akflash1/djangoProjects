@@ -1,12 +1,14 @@
 from django.urls import path, include
+from .API.urls import router
 from .views import (
-    IndexView, MainPageView, AboutView, CreateView, TopicListView, SetPasswordView, SetUserDataView,
-    DeactivateView, RegisterView, LoginView, LogoutView, ShowArticleView, UpdateArticleView,
+    MainPageView, AboutView, CreateView, TopicListView, SetPasswordView, SetUserDataView,
+    RegisterView, LoginView, LogoutView, ShowArticleView, UpdateArticleView,
     CreateArticleView, DeleteArticleView, AddCommentView, TopicsSubscribeView,
     TopicsUnsubscribeView, ProfileUsernameView, ArchiveView, ArticleListView, TopicDetailView
 )
 
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('', MainPageView.as_view(), name='home'),
     path('about/', AboutView.as_view(), name='about'),
     path('create/', CreateView.as_view(), name='create'),
@@ -27,5 +29,4 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('topics/<int:topic_id>/', TopicDetailView.as_view(), name='topic_detail'),
-    path('api/', include('myapp.urls_api')),
 ]
