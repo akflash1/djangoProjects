@@ -2,7 +2,7 @@
 {% block title %}Comments{% endblock %}
 {% block content %}
   <h2>Add Comment</h2>
-  <form method="post" action="">
+  <form method="post" action="{% url 'article_detail' article_id=article.id %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>

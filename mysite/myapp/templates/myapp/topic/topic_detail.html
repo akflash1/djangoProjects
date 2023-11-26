@@ -1,0 +1,15 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+    <h2>Articles on {{ topic.name }}</h2>
+    {% for article in articles %}
+        <p class="info">
+            <a href="{{ article.get_absolute_url }}"> {{ article.title }}</a> by {{ article.author }}
+            <br/>
+        <p class="date">
+            Published on {{ article.created_at }}
+        </p>
+    {% empty %}
+        <p>There are no articles for {{ topic.name }} yet.</p>
+    {% endfor %}
+{% endblock %}
